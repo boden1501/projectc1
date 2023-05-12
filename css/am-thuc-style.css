@@ -1,0 +1,23 @@
+article{
+    width: 45%;
+    height: 100%;
+    float: left;
+    margin: 20px;
+   
+    margin-top: 50px;
+}
+article p{
+    border: 3px dotted #C4BAAD;
+    padding: 20px;
+    margin: 20px;
+    text-align: justify;
+    font-size: 20px;
+}
+article video{
+    width: 100%;
+    
+}
+article img{
+    width: 100%;
+    
+}
