@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục sản phẩm</title>
+    <script src="./js/jquery-3.6.4.js"></script>
+    <script src="./js/data.js"></script>
+    <link rel="stylesheet" href="./css/mystyle.css">
+    <script>
+        function loadData() {
+            console.log(product);
+            let s = '';
+            $.each(product, function (i, v) {
+                s += `<div class="sp" data-id=${v.id}>
+                    <h1>${v.id}: ${v.name}</h1>
+                    <p>Giá: ${v.price}</p>
+                    <img src="${v.img}" alt="">
+                    <div class='chitiet'>Chi tiet</div>
+                    </div>
+                 `
+            });
+            $('#content').html(s);
+            $("#content .sp").click(function (e) {
+                id = $(this).data('id')
+                localStorage.setItem('id', id)
+                window.location = 'detail.html'
+
+            });
+        }
+        $(document).ready(function () {
+            loadData();
+            $("#search").keyup(function (e) {
+                var value = $(this).val().toLowerCase();
+                $("#content .sp").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="search" name="" id="search" placeholder="Tìm kiếm sản phẩm">
+    <div id="content">
+
+
+    </div>
+</body>
+
+</html>
